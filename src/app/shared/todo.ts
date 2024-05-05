@@ -10,6 +10,6 @@ export class Todo {
         public text?: string,
         public due_date?: Date,
         public image_url?: string,
-        public tag?: Tag
+        public tags?: Tag[]
     ) {}
 }
