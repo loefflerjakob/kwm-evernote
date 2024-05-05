@@ -9,7 +9,7 @@ export class Note {
     constructor(
         public id: number,
         public title: string,
-        public kwmlist_id: string,
+        public kwmlist_id: number,
         public text?: string,
         public image_url?: string,
         public todos?: Todo[],

@@ -1,0 +1,19 @@
+<div class="ui segment">
+  <h2 class="ui header">Tag List</h2>
+  @if(tags) {
+     @for (tag of tags; track tag) {
+        <div class="ui blue labels">
+            <a class="ui tag label">
+              {{ tag.name }}
+            </a>
+          </div>
+    }
+  }     @else {No tags yet!}
+
+   
+
+</div>
+
+
+
+
