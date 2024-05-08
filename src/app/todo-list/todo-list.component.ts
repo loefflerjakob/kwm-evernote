@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../shared/todo';
 import { Tag } from '../shared/todo';
+import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 
 @Component({
   selector: 'bs-todo-list',
   standalone: true,
-  imports: [],
+  imports: [
+    TodoListItemComponent
+  ],
   templateUrl: './todo-list.component.html',
   styles: ``
 })

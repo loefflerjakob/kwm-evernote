@@ -2,13 +2,9 @@
     <h2 class="ui header">Todo List</h2>
     @if (kwmlists) {
         @for (kwmlist of kwmlists; track kwmlists) {
-            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 5px;">
-                <h3><a>{{kwmlist.name}}</a></h3>
-                <a class="ui label">{{kwmlist.notes.length}} Todos</a>
-            </div>
+            <a class="bs-kwmlist-list-item" style="display: flex; align-items: center; justify-content: flex-start; gap: 5px;"[kwmlist]="kwmlist" (click)="showDetails(kwmlist)">
+            </a>
 
         }
-
-
     } @else {No Kwmlists yet!}
 </div>

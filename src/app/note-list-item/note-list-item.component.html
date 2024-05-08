@@ -1,0 +1,18 @@
+<img class="ui avatar image" [src]="note?.image_url">
+<div class="content">
+    <h3 class="ui header"><a>{{note?.title}}</a></h3>
+    <div class="description"><p>{{note?.text}}</p></div>
+    <div class="ui labels">
+
+        @if(note?.tags || note?.todos) {
+            @if(note?.todos) {
+                <a class="ui label">{{note?.todos?.length}} Todos</a>
+            }
+        @for (tag of note?.tags; track tag) {
+        <a class="ui tag label blue">{{tag.name}}</a>
+        }
+        }
+    </div>
+
+
+</div>
