@@ -2,7 +2,6 @@
 <bs-tag-list></bs-tag-list>
 <bs-todo-list></bs-todo-list>
 <bs-note-list></bs-note-list>
-<bs-kwmlist-list></bs-kwmlist-list>
 
 @if (listOn) {
     <bs-note-list (showDetailsEvent)="showDetails($event)"></bs-note-list>
@@ -10,10 +9,18 @@
     <bs-note-details [note]="note" (showListEvent)="showList()"></bs-note-details>
 }
 
--->
 
 @if (listOn) {
     <bs-kwmlist-list (showDetailsEvent)="showDetails($event)"></bs-kwmlist-list>
 } @else if (detailsOn) {
     <bs-kwmlist-details [kwmlist]="kwmlist" (showListEvent)="showList()"></bs-kwmlist-details>
 }
+-->
+
+<div class="ui two item tabs menu">
+    <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+    <a routerLink="kwmlists" routerLinkActive="active" class="item">Lists</a>
+    </div>
+    <div class="ui container">
+    <router-outlet></router-outlet>
+    </div>

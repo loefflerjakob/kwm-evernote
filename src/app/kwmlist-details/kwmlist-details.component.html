@@ -1,5 +1,23 @@
 @if(kwmlist) {
-    <h1>jetzt coole kwmlist juhu</h1>
+    <h1>{{kwmlist.name}}</h1>
+    <button class="ui icon red button"><i class="trash icon"></i></button>  
+    <button class="ui icon button"><i class="edit icon"></i></button>  
+
+
+    <div class="ui segment">
+        <h2 class="ui header">Note List</h2>
+        @if (kwmlist.notes) {
+        <div class="ui relaxed divided list">
+            @for (note of kwmlist.notes; track kwmlist.notes) {
+                <a class="item bs-note-list-item" [note]="note" [routerLink]="'' + note.id"></a>
+                }
+        </div>
+        }
+    
+        @else {No notes yet!}
+    </div>
 }
 
-<button (click)="showKwmlistList()" class="ui red button">Back to Kwmlist List</button>
+
+
+<button [routerLink]="'/kwmlists'" class="ui blue button">Back to Kwmlists</button>

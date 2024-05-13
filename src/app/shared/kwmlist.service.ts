@@ -11,7 +11,7 @@ export class KwmlistService {
     this.kwmlists = [
       new Kwmlist (
         1,
-        'New List',
+        'New List 1',
         false,
         [
           new Note(
@@ -43,8 +43,8 @@ export class KwmlistService {
           [new Tag(1, "Shopping"), new Tag(2, "Private")]
         ),
         new Note(
-          1,
-          'Shopping',
+          2,
+          'Get Flowers',
           101,
           'Everything for Shopping',
           'https://picsum.photos/200',
@@ -73,8 +73,8 @@ export class KwmlistService {
       ],
       ),
       new Kwmlist (
-        1,
-        'New List',
+        2,
+        'New List 2', 
         false,
         [new Note(
           1,
@@ -111,6 +111,10 @@ export class KwmlistService {
 
   getAll() {
     return this.kwmlists;
+  }
+
+  getSingle(id: number) : Kwmlist {
+    return <Kwmlist>this.kwmlists.find(kwmlist => kwmlist.id == id);
   }
 }
 

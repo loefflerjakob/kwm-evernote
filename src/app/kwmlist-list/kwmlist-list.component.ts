@@ -3,12 +3,14 @@ import { Kwmlist, Note } from '../shared/kwmlist';
 import { Tag, Todo } from '../shared/note';
 import { KwmlistService } from '../shared/kwmlist.service';
 import { KwmlistListItemComponent } from '../kwmlist-list-item/kwmlist-list-item.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'bs-kwmlist-list',
   standalone: true,
   imports: [
-    KwmlistListItemComponent
+    KwmlistListItemComponent,
+    RouterLink
   ],
   templateUrl: './kwmlist-list.component.html',
   styles: ``
@@ -16,13 +18,9 @@ import { KwmlistListItemComponent } from '../kwmlist-list-item/kwmlist-list-item
 export class KwmlistListComponent implements OnInit{
 
   kwmlists: Kwmlist[] = [];
-  @Output() showDetailsEvent = new EventEmitter<Kwmlist>;
 
   constructor(private ks: KwmlistService) {}
 
-  showDetails(kwmlist: Kwmlist) {
-    this.showDetailsEvent.emit(kwmlist);
-    }
 
   ngOnInit() {
     this.kwmlists = this.ks.getAll();

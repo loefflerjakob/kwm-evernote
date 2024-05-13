@@ -38,7 +38,7 @@ export class NoteService {
       ),
 
       new Note(
-        3,
+        2,
         'Work',
         101,
         'List for all Work related things',
@@ -71,6 +71,11 @@ export class NoteService {
   getAll() {
     return this.notes;
   }
+
+  getSingle(id: number) : Note {
+    return <Note>this.notes.find(note => note.id == id);
+
+ }
 
 }
 

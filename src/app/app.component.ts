@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NoteListComponent } from './note-list/note-list.component';
@@ -14,7 +14,7 @@ import { KwmlistDetailsComponent } from "./kwmlist-details/kwmlist-details.compo
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, TagListComponent, TodoListComponent, NoteListComponent, KwmlistListComponent, NoteDetailsComponent, KwmlistDetailsComponent]
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, TagListComponent, TodoListComponent, NoteListComponent, KwmlistListComponent, NoteDetailsComponent, KwmlistDetailsComponent]
 })
 export class AppComponent {
   listOn = true;

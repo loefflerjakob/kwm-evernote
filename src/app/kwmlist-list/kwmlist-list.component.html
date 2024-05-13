@@ -2,7 +2,7 @@
     <h2 class="ui header">Todo List</h2>
     @if (kwmlists) {
         @for (kwmlist of kwmlists; track kwmlists) {
-            <a class="bs-kwmlist-list-item" style="display: flex; align-items: center; justify-content: flex-start; gap: 5px;"[kwmlist]="kwmlist" (click)="showDetails(kwmlist)">
+            <a class="bs-kwmlist-list-item" style="display: flex; align-items: center; justify-content: flex-start; gap: 5px;"[kwmlist]="kwmlist" [routerLink]="'' + kwmlist.id">
             </a>
 
         }
