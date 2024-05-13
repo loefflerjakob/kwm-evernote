@@ -1,5 +1,37 @@
 @if(note) {
-    <h1>jetzt coole note juhu</h1>
+
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <h1>{{note.title}}</h1>
+        @if(note.tags) {
+            <div class="ui labels">
+                @for (tag of note.tags; track note) {
+                    <a class="ui tag label blue">{{tag.name}}</a>
+                }
+            </div>
+        }
+
+    </div>
+    <button class="ui icon button green"><i class="add icon"></i></button>  
+    <button class="ui icon button blue"><i class="edit icon"></i></button>  
+    <button class="ui icon red button"><i class="trash icon"></i></button>  
+    <br>
+    <br>
+
+ 
+    <img class="ui image" [src]="note.image_url">
+    <p class="ui segment">{{note.text}}</p>
+    @if (note.todos) {
+        <div class="ui segment">
+            <h2>Todos of {{note.title}}</h2>
+            @for (todo of note.todos; track todo) {
+                <!-- TODO list component von Todos einfügen-->
+                <div class="item bs-todo-list-item" [todo]="todo"></div>
+                <div class="ui divider"></div>
+            }
+        </div>
+
+    }
+
 }
 
-<button class="ui red button">Back to Note Liste</button>
+<button class="ui red button" >Back to Note Liste</button>

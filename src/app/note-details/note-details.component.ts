@@ -2,12 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Note } from '../shared/note';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NoteService } from '../shared/note.service';
+import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 
 @Component({
   selector: 'bs-note-details',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    TodoListItemComponent
   ],
   templateUrl: './note-details.component.html',
   styles: ``

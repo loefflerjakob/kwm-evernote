@@ -1,20 +1,31 @@
-<img class="ui avatar image" [src]="todo?.image_url">
-            <div class="content">
-                <h3 class="ui header"><a>{{todo?.title}}</a></h3>
-                <div class="description"><p>{{todo?.text}}</p></div>
-                  
-                  
-                @if(todo?.tags || todo?.due_date) {
-                    <div class="ui labels">
-                        @if(todo?.due_date) {
-                            <div class="ui label">
-                                <i class="calendar check icon"></i>{{todo?.due_date?.getDate()}}.{{todo?.due_date?.getMonth()}}.{{todo?.due_date?.getFullYear()}}
-                            </div>
-                        }
-                        @for (tag of todo?.tags; track tag) {
-                            <a class="ui tag label blue">{{tag.name}}</a>
-                        }
-                       
-                    </div>
+<div style="display: flex; align-items: center; gap: 20px;">
+
+    <input type="checkbox" class="ui checkbox huge" />
+    <div>
+        <div style="display: flex; align-items: center;">
+            <img class="ui avatar image" [src]="todo?.image_url">
+            <h3 class="ui header" style="margin: 0;"><a>{{todo?.title}}</a></h3>
+        </div>
+
+        <div class="content">
+            <div class="description">
+                <p>{{todo?.text}}</p>
+            </div>
+
+
+            @if(todo?.tags || todo?.due_date) {
+            <div class="ui labels">
+                @if(todo?.due_date) {
+                <div class="ui label">
+                    <i
+                        class="calendar check icon"></i>{{todo?.due_date?.getDate()}}.{{todo?.due_date?.getMonth()}}.{{todo?.due_date?.getFullYear()}}
+                </div>
+                }
+                @for (tag of todo?.tags; track tag) {
+                <a class="ui tag label blue">{{tag.name}}</a>
                 }
             </div>
+            }
+        </div>
+    </div>
+</div>
