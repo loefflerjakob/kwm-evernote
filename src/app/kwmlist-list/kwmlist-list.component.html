@@ -1,9 +1,14 @@
 <div class="ui segment">
-    <h2 class="ui header">Todo List</h2>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <h2 style="margin: 0;" class="ui header">Your KWM Lists</h2>
+        <button class="ui icon button green"><i class="add icon"></i></button>  
+    </div>
+    
     @if (kwmlists) {
         @for (kwmlist of kwmlists; track kwmlists) {
             <a class="bs-kwmlist-list-item" style="display: flex; align-items: center; justify-content: flex-start; gap: 5px;"[kwmlist]="kwmlist" [routerLink]="'' + kwmlist.id">
             </a>
+            <div class="ui divider"></div>
 
         }
     } @else {No Kwmlists yet!}

@@ -5,7 +5,7 @@ import { NoteService } from '../shared/note.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'bs-note-list',
+  selector: 'div.bs-note-list',
   standalone: true,
   imports: [
     NoteListItemComponent,
@@ -21,8 +21,6 @@ export class NoteListComponent implements OnInit{
   constructor (private ns: NoteService) {
 
   }
-
-
 
   ngOnInit(){
     this.notes = this.ns.getAll();

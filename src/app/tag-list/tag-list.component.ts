@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TagService } from '../shared/tag.service';
 import { Tag } from '../shared/tag';
 
 @Component({
@@ -11,11 +12,11 @@ import { Tag } from '../shared/tag';
 export class TagListComponent implements OnInit {
   tags: Tag[] = [];
 
+  constructor(private ts: TagService) {
+
+  }
+
   ngOnInit() {
-    this.tags = [
-      new Tag(1, 'Mein erster Tag'),
-      new Tag(2, 'Mein zweiter Tag'),
-      new Tag(3, 'Mein dritter Tag')
-    ];
+   this.tags = this.ts.getAll();
   }
 }

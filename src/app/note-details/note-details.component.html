@@ -11,7 +11,6 @@
         }
 
     </div>
-    <button class="ui icon button green"><i class="add icon"></i></button>  
     <button class="ui icon button blue"><i class="edit icon"></i></button>  
     <button class="ui icon red button"><i class="trash icon"></i></button>  
     <br>
@@ -22,7 +21,10 @@
     <p class="ui segment">{{note.text}}</p>
     @if (note.todos) {
         <div class="ui segment">
-            <h2>Todos of {{note.title}}</h2>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <h2 style="margin: 0;" class="ui header">Todos</h2>
+                <button class="ui icon button green"><i class="add icon"></i></button>  
+            </div>
             @for (todo of note.todos; track todo) {
                 <!-- TODO list component von Todos einfügen-->
                 <div class="item bs-todo-list-item" [todo]="todo"></div>
