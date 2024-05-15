@@ -1,120 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Kwmlist, Note } from './kwmlist';
 import { Tag, Todo } from './todo';
+import { HttpClient } from '@angular/common/http';
+import { Observable, retry, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KwmlistService {
-  kwmlists: Kwmlist [] = [];
-  constructor() { 
-    this.kwmlists = [
-      new Kwmlist (
-        1,
-        'New List 1',
-        false,
-        [
-          new Note(
-          1,
-          'Shopping',
-          101,
-          'Everything for Shopping',
-          'https://picsum.photos/200',
-          [new Todo(
-            1,
-            'Buy groceries',
-            true,
-            101,
-            'Remember to buy eggs and milk',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Shopping"), new Tag(2, "Private")]
-          ),
-          new Todo(
-            2,
-            'Send the report',
-            false,
-            102,
-            'Complete the annual report before sending',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Work")]
-          )],
-          [new Tag(1, "Shopping"), new Tag(2, "Private")]
-        ),
-        new Note(
-          2,
-          'Get Flowers',
-          101,
-          'Everything for Shopping',
-          'https://picsum.photos/200',
-          [new Todo(
-            1,
-            'Buy groceries',
-            true,
-            101,
-            'Remember to buy eggs and milk',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Shopping"), new Tag(2, "Private")]
-          ),
-          new Todo(
-            2,
-            'Send the report',
-            false,
-            102,
-            'Complete the annual report before sending',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Work")]
-          )],
-          [new Tag(1, "Shopping"), new Tag(2, "Private")]
-        )
-      ],
-      ),
-      new Kwmlist (
-        2,
-        'New List 2', 
-        false,
-        [new Note(
-          1,
-          'Shopping',
-          101,
-          'Everything for Shopping',
-          'https://picsum.photos/200',
-          [new Todo(
-            1,
-            'Buy groceries',
-            true,
-            101,
-            'Remember to buy eggs and milk',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Shopping"), new Tag(2, "Private")]
-          ),
-          new Todo(
-            2,
-            'Send the report',
-            false,
-            102,
-            'Complete the annual report before sending',
-            new Date('2024-04-25 12:17:33'),
-            'https://picsum.photos/200',
-            [new Tag(1, "Work")]
-          )],
-          [new Tag(1, "Shopping"), new Tag(2, "Private")]
-        )],
-      )
+  private api = 'http://kwm-evernote.s2110456017.student.kwmhgb.at/api';
+  constructor(private http: HttpClient) { }
 
-    ]
+
+  getAll(): Observable<Array<Kwmlist>> {
+    return this.http.get<Array<Kwmlist>>(`${this.api}/kwmlists`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
-  getAll() {
-    return this.kwmlists;
+  getSingle(id: number): Observable<Kwmlist> {
+    return this.http.get<Kwmlist>(`${this.api}/kwmlists/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
-  getSingle(id: number) : Kwmlist {
-    return <Kwmlist>this.kwmlists.find(kwmlist => kwmlist.id == id);
+  remove(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/kwmlists/${id}`)
+    .pipe(retry(3)).pipe(catchError(this.errorHandler));
+    }
+
+
+  private errorHandler(error: Error | any): Observable<any> {
+    return throwError(error);
   }
 }
 

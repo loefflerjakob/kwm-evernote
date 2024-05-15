@@ -23,6 +23,5 @@ export class KwmlistListComponent implements OnInit{
 
 
   ngOnInit() {
-    this.kwmlists = this.ks.getAll();
-  }
+    this.ks.getAll().subscribe(res => this.kwmlists = res);  }
 }

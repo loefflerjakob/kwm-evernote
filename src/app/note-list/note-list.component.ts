@@ -23,7 +23,6 @@ export class NoteListComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.notes = this.ns.getAll();
-    
+    this.ns.getAll().subscribe(res => this.notes = res);    
   }
 }
