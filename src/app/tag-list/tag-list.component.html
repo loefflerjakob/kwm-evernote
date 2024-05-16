@@ -1,7 +1,7 @@
 <div class="ui segment">
   <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
     <h2 style="margin: 0;" class="ui header">Tags</h2>
-    <button class="ui icon button green"><i class="add icon"></i></button>  
+    <button routerLink="/tags/edit" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
 </div>  @if(tags) {
      @for (tag of tags; track tag) {
        <div class="ui labels bs-tag-list-item" [tag]="tag">

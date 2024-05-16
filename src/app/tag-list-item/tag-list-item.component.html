@@ -3,4 +3,4 @@
       {{ tag.name }}
     </a>
     <a class="ui red label" (click)="removeTag()"><i style="margin: 0;" class="delete icon"></i></a>
-    <a class="ui label"><i style="margin: 0;" class="edit icon"></i></a>
+    <a class="ui label"  [routerLink]="['../tags/edit',tag.id]"><i style="margin: 0;" class="edit icon"></i></a>

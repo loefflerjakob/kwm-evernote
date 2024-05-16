@@ -1,0 +1,14 @@
+<div class="ui segment">
+    <h1>Add Tag</h1>
+    <form class="ui large form" [formGroup]="tagForm" (ngSubmit)="submitForm()">
+        <input type="hidden" formControlName="id">
+        <div class="field">
+            <label>Tag name</label>
+            <input formControlName="name">
+            @if (errors['name']) {
+            <div class="ui negative message">{{errors['name']}}</div>
+            }
+        </div>
+        <button type="submit" class="ui button" [disabled]="tagForm.invalid">Save</button>
+    </form>
+</div>
