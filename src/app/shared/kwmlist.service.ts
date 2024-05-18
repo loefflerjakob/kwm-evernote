@@ -24,8 +24,17 @@ export class KwmlistService {
 
   remove(id: number): Observable<any> {
     return this.http.delete(`${this.api}/kwmlists/${id}`)
-    .pipe(retry(3)).pipe(catchError(this.errorHandler));
-    }
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  create(kwmlist: Kwmlist): Observable<any> {
+    return this.http.post(`${this.api}/kwmlists`, kwmlist)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+  update(kwmlist: Kwmlist): Observable<any> {
+    return this.http.put(`${this.api}/kwmlists/${kwmlist.id}`, kwmlist)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
 
 
   private errorHandler(error: Error | any): Observable<any> {

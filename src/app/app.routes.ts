@@ -6,6 +6,7 @@ import { NoteDetailsComponent } from './note-details/note-details.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { TagFormComponent } from './tag-form/tag-form.component';
+import { KwmlistFormComponent } from './kwmlist-form/kwmlist-form.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,8 +17,11 @@ export const routes: Routes = [
     { path: 'kwmlists/:id', component: KwmlistDetailsComponent },
     { path: 'kwmlists/:id/:id', component: NoteDetailsComponent },
 
-    { path: 'tags/edit', component: TagFormComponent },
-    { path: 'tags/edit/:id', component: TagFormComponent }
+    { path: 'edit/tag', component: TagFormComponent },
+    { path: 'edit/tag/:id', component: TagFormComponent },
+
+    { path: 'edit/kwmlist', component: KwmlistFormComponent },
+    { path: 'edit/kwmlist/:id', component: KwmlistFormComponent },
 
 
 

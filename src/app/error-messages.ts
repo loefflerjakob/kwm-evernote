@@ -6,6 +6,6 @@ export class ErrorMessage {
     ) {}
 }
 
-export const TagFormErrorMessages = [
-    new ErrorMessage('name', 'required', 'Please provide a Tag name'),
+export const ErrorMessages = [
+    new ErrorMessage('name', 'required', 'Please provide a Name'),
 ];

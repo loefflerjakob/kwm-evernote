@@ -1,0 +1,21 @@
+<div class="ui segment">
+    <h1>Add Kwmlist</h1>
+    <form class="ui large form" [formGroup]="kwmlistForm" (ngSubmit)="submitForm()">
+        <input type="hidden" formControlName="id">
+        <div class="field">
+            <label>Kwmlist name</label>
+            <input formControlName="name">
+            @if (errors['name']) {
+            <div class="ui negative message">{{errors['name']}}</div>
+            }
+        </div>
+        <div class="field">
+            <label>Is shared</label>
+            <input type="checkbox" formControlName="is_shared">
+            @if (errors['name']) {
+            <div class="ui negative message">{{errors['name']}}</div>
+            }
+        </div>
+        <button type="submit" class="ui button" [disabled]="kwmlistForm.invalid">Save</button>
+    </form>
+</div>

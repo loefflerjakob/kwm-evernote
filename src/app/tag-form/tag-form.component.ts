@@ -4,7 +4,7 @@ import { TagFactory } from '../shared/tag-factory';
 import { TagService } from '../shared/tag.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tag } from '../shared/tag';
-import { TagFormErrorMessages } from './tag-form-error-messages';
+import { ErrorMessages } from '../error-messages';
 
 @Component({
   selector: 'bs-tag-form',
@@ -73,7 +73,7 @@ export class TagFormComponent {
   updateErrorMessages() {
     console.log("Is invalid?" + this.tagForm.invalid);
     this.errors = {};
-    for (const message of TagFormErrorMessages) {
+    for (const message of ErrorMessages) {
       const control = this.tagForm.get(message.forControl);
       if (
         control &&
