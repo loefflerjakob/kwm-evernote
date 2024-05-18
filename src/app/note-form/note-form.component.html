@@ -1,0 +1,40 @@
+<h1>Note Form</h1>
+<form class="ui large form" [formGroup]="noteForm" (ngSubmit)="submitForm()">
+    <input type="hidden" formControlName="id">
+
+    <div class="field">
+        <label>Note Title</label>
+        <input formControlName="title">
+        @if(errors['title']) {
+        <div class="ui negative message"> {{ errors['title'] }} </div>
+        }
+    </div>
+
+    <div class="field">
+        <label>Note Text</label>
+        <input formControlName="text">
+        @if(errors['text']) {
+        <div class="ui negative message"> {{ errors['text'] }} </div>
+        }
+    </div>
+
+    <div class="field">
+        <label>Image URL</label>
+        <input formControlName="image_url">
+    </div>
+
+    <div class="field">
+        <label>Add List to</label>
+        @for (kwmlist of kwmlists; track kwmlists) {
+        <label>
+            <input type="radio" value="{{kwmlist.id}}" formControlName="kwmlist_id" [checked]="kwmlist.id == note.kwmlist_id ? true : false" >
+            <span>{{kwmlist.name}}</span>
+        </label>
+        }
+        @if(errors['image_url']) {
+            <div class="ui negative message"> {{ errors['kwmlist_id'] }} </div>
+            }
+    </div>
+    <button type="submit" class="ui button" [disabled]="noteForm.invalid">Submit</button>
+
+</form>

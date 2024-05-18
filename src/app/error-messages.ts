@@ -8,4 +8,6 @@ export class ErrorMessage {
 
 export const ErrorMessages = [
     new ErrorMessage('name', 'required', 'Please provide a Name'),
+    new ErrorMessage('title', 'required', 'Please provide a Title'),
+    new ErrorMessage('image_url', 'required', 'Please check a box'),
 ];

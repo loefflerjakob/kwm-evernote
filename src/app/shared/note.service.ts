@@ -26,6 +26,15 @@ export class NoteService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  create(note: Note): Observable<any> {
+    return this.http.post(`${this.api}/notes`, note)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+  update(note: Note): Observable<any> {
+    return this.http.put(`${this.api}/notes/${note.id}`, note)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }

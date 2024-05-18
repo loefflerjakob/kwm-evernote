@@ -11,7 +11,7 @@ import { KwmlistFactory } from '../shared/kwmlist-factory';
   selector: 'bs-kwmlist-details',
   standalone: true,
   imports: [
-    RouterLink, NoteListItemComponent
+    RouterLink, NoteListItemComponent, NoteListComponent
   ],
   templateUrl: './kwmlist-details.component.html',
   styles: ``
