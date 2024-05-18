@@ -27,14 +27,28 @@
         <label>Add List to</label>
         @for (kwmlist of kwmlists; track kwmlists) {
         <label>
-            <input type="radio" value="{{kwmlist.id}}" formControlName="kwmlist_id" [checked]="kwmlist.id == note.kwmlist_id ? true : false" >
+            <input type="radio" value="{{kwmlist.id}}" formControlName="kwmlist_id"
+                [checked]="kwmlist.id == note.kwmlist_id ? true : false">
             <span>{{kwmlist.name}}</span>
         </label>
         }
         @if(errors['image_url']) {
-            <div class="ui negative message"> {{ errors['kwmlist_id'] }} </div>
-            }
+        <div class="ui negative message"> {{ errors['kwmlist_id'] }} </div>
+        }
     </div>
+
+
+    <div class="field">
+        <label for="tags">Tags</label>
+        <select id="tags" formControlName="tags" multiple>
+            @for(tag of tags; track tag){
+            <option [ngValue]="{id: tag.id}">{{tag.name}}</option>
+            }
+        </select>
+    </div>
+
+
+
     <button type="submit" class="ui button" [disabled]="noteForm.invalid">Submit</button>
 
 </form>

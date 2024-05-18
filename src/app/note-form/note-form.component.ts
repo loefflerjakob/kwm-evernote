@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { KwmlistService } from '../shared/kwmlist.service';
 import { Kwmlist, Note } from '../shared/kwmlist';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoteFactory } from '../shared/note-factory';
 import { NoteService } from '../shared/note.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessages } from '../error-messages';
+import { Tag } from '../shared/tag';
+import { TagService } from '../shared/tag.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'bs-note-form',
@@ -18,43 +22,66 @@ import { ErrorMessages } from '../error-messages';
 })
 export class NoteFormComponent {
   kwmlists: Kwmlist[] = [];
+
+  //this is where all tags can be fetched
+  alltags: Tag [] = [];
+
   noteForm: FormGroup;
   note = NoteFactory.empty();
   errors: { [key: string]: string } = {};
   isUpdatingNote = false;
+  tags: Tag[] = [];
+  selectedTags: FormControl = new FormControl();
+
 
   constructor(
     private ks: KwmlistService,
+    private ts: TagService,
     private fb: FormBuilder,
     private ns: NoteService,
     private route: ActivatedRoute,
     private router: Router,
+    private http:HttpClient
+
   ) {
     this.noteForm = this.fb.group({});
-
   }
+
+  initTags(tags: Tag[] | undefined): { id: number }[] {
+    if (!tags) return [];
+    return tags.map(tag => ({ id: tag.id }));
+  }
+  
+
+
 
 
   ngOnInit() {
     this.ks.getAll().subscribe(res => this.kwmlists = res);
+    this.ts.getAll().subscribe(res => this.tags = res);
     const id = this.route.snapshot.params["id"];
     if (id) {
       this.isUpdatingNote = true;
       this.ns.getSingle(id).subscribe(note => {
         this.note = note;
+
         this.initNote();
       });
-    }
+    } 
     this.initNote();
-  }
+
+    
+   }
+ 
 
   initNote() {
+
     let kwmlist_id_value;
     if(this.isUpdatingNote) {
       kwmlist_id_value = this.note.kwmlist_id;
     } else {
       kwmlist_id_value = '';
-    }
+    } 
 
 
     this.noteForm = this.fb.group({
@@ -63,14 +90,17 @@ export class NoteFormComponent {
       text: this.note.text,
       image_url: this.note.image_url,
       kwmlist_id: [kwmlist_id_value, Validators.required],
-    });
+      tags: [this.initTags(this.note.tags)]
+        });
     this.noteForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());
   }
 
+  
+
   submitForm() {
     const note: Note = NoteFactory.fromObject(this.noteForm.value);
-
+    console.log(note);
     if(this.isUpdatingNote) {
       this.ns.update(note).subscribe(res => {
         this.router.navigate(["../../../kwmlists", note.kwmlist_id], {
