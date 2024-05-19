@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TodoService } from '../shared/todo.service';
 
 @Component({
-  selector: 'div.bs-todo-list-item',
+  selector: 'div.bs-todo-list-item, a.bs-todo-list-item',
   standalone: true,
   imports: [
     RouterLink

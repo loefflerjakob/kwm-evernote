@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { KwmlistService } from '../shared/kwmlist.service';
 import { Kwmlist, Note } from '../shared/kwmlist';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoteFactory } from '../shared/note-factory';
 import { NoteService } from '../shared/note.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessages } from '../error-messages';
 import { Tag } from '../shared/tag';
 import { TagService } from '../shared/tag.service';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -22,9 +21,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NoteFormComponent {
   kwmlists: Kwmlist[] = [];
-
-  //this is where all tags can be fetched
-  alltags: Tag [] = [];
 
   noteForm: FormGroup;
   note = NoteFactory.empty();
@@ -41,7 +37,6 @@ export class NoteFormComponent {
     private ns: NoteService,
     private route: ActivatedRoute,
     private router: Router,
-    private http:HttpClient
 
   ) {
     this.noteForm = this.fb.group({});
@@ -69,8 +64,6 @@ export class NoteFormComponent {
       });
     } 
     this.initNote();
-
-    
    }
  
 

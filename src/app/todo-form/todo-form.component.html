@@ -1,0 +1,63 @@
+<h1>Todo Form</h1>
+<form class="ui large form" [formGroup]="todoForm" (ngSubmit)="submitForm()">
+<input type="hidden" formControlName="id">
+
+<div class="field">
+    <label>Todo Title</label>
+    <input formControlName="title">
+    @if(errors['title']) {
+    <div class="ui negative message"> {{ errors['title'] }} </div>
+    }
+</div>
+
+<div class="field">
+    <label>Todo Text</label>
+    <input formControlName="text">
+    @if(errors['text']) {
+    <div class="ui negative message"> {{ errors['text'] }} </div>
+    }
+</div>
+
+<div class="field">
+    <label>Todo Text</label>
+    <input type="date" formControlName="due_date">
+    @if(errors['due_date']) {
+    <div class="ui negative message"> {{ errors['due_date'] }} </div>
+    }
+</div>
+
+<div class="field">
+    <label>Is shared</label>
+    <input type="checkbox" formControlName="is_shared">
+</div>
+
+<div class="field">
+    <label>Image URL</label>
+    <input formControlName="image_url">
+</div>
+
+
+<div class="field">
+    <label>Add List to</label>
+    @for (note of notes; track note) {
+    <label>
+        <input type="radio" value="{{note.id}}" formControlName="note_id"
+            [checked]="note.id == todo.note_id ? true : false">
+        <span>{{note.title}}</span>
+    </label>
+    }
+</div>
+
+<div class="field">
+    <label for="tags">Tags</label>
+    <select id="tags" formControlName="tags" multiple>
+        @for(tag of tags; track tag){
+        <option [ngValue]="{id: tag.id}" selected="true">{{tag.name}}</option>
+        }
+    </select>
+</div>
+
+
+
+<button type="submit" class="ui button" [disabled]="todoForm.invalid">Submit</button>
+</form>

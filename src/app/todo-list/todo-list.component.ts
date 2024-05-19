@@ -3,12 +3,14 @@ import { Todo } from '../shared/todo';
 import { Tag } from '../shared/todo';
 import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 import { TodoService } from '../shared/todo.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'bs-todo-list',
   standalone: true,
   imports: [
-    TodoListItemComponent
+    TodoListItemComponent,
+    RouterLink
   ],
   templateUrl: './todo-list.component.html',
   styles: ``

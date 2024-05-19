@@ -5,6 +5,7 @@ import { KwmlistService } from '../shared/kwmlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessages } from '../error-messages';
 import { Kwmlist } from '../shared/kwmlist';
+import { Tag } from '../shared/tag';
 
 @Component({
   selector: 'bs-kwmlist-form',
@@ -20,6 +21,8 @@ export class KwmlistFormComponent {
   kwmlist = KwmlistFactory.empty();
   errors: { [key: string]: string } = {};
   isUpdatingKwmlist = false;
+  tags: Tag[] = [];
+
 
   constructor(
     private fb: FormBuilder,

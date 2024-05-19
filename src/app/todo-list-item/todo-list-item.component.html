@@ -31,7 +31,8 @@
    
     <div>
         <a (click)="removeTodo()" class="ui red label"><i style="margin: 0;" class="delete icon"></i></a>
-        <a class="ui label"><i style="margin: 0;" class="edit icon"></i></a>
+        <!--//TODO hier router link anpassen -->
+        <a class="ui label"  [routerLink]="['../edit/todo',todo.id]"><i style="margin: 0;" class="edit icon"></i></a>
     </div>
    
 </div>
