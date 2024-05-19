@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../shared/todo';
-import { Tag } from '../shared/todo';
 import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 import { TodoService } from '../shared/todo.service';
 import { RouterLink } from '@angular/router';

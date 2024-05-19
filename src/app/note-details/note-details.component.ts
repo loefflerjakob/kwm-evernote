@@ -28,10 +28,12 @@ export class NoteDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     const params = this.route.snapshot.params;
     this.ns.getSingle(params['id'])
       .subscribe((n: Note) => this.note = n);
   }
+
 
   removeNote() {
     if (confirm('Are you sure to delete Note?')) {

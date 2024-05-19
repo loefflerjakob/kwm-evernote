@@ -1,9 +1,8 @@
 <div class="ui segment">
     <h2 class="ui header">Notes</h2>
     @if (notes) {
-        hier note
     <div class="ui relaxed divided list">
-        @for (note of notes; track notes) {
+        @for (note of notes; track note) {
         <a class="item bs-note-list-item" [note]="note" [routerLink]="'note.id'"></a>
         }
     </div>

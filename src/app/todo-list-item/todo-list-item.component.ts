@@ -22,6 +22,7 @@ export class TodoListItemComponent {
     private router: Router
   ) { }
 
+
   removeTodo() {
     if (confirm('Are you sure to delete Todo?')) {
       this.ts.remove(this.todo.id)

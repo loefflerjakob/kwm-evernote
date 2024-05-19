@@ -1,38 +1,39 @@
 @if(note) {
 
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <h1>{{note.title}}</h1>
-        @if(note.tags) {
-            <div class="ui labels">
-                @for (tag of note.tags; track note) {
-                    <a class="ui tag label blue">{{tag.name}}</a>
-                }
-            </div>
+<div style="display: flex; align-items: center; gap: 8px;">
+    <h1>{{note.title}}</h1>
+    @if(note.tags) {
+    <div class="ui labels">
+        @for (tag of note.tags; track note) {
+        <a class="ui tag label blue">{{tag.name}}</a>
         }
-
     </div>
-    <button class="ui icon button blue" [routerLink]="['../../../edit/note',note.id]"><i class="edit icon"></i></button>  
-    <button class="ui icon red button" (click)="removeNote()"><i class="trash icon"></i></button>  
-    <br>
-    <br>
-
- 
-    <img class="ui image" [src]="note.image_url">
-    <p class="ui segment">{{note.text}}</p>
-    @if (note.todos) {
-        <div class="ui segment">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                <h2 style="margin: 0;" class="ui header">Todos</h2>
-                <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
-            </div>
-            @for (todo of note.todos; track todo) {
-                <div class="item bs-todo-list-item" [todo]="todo"></div>
-                <div class="ui divider"></div>
-            }
-        </div>
-
     }
+
+</div>
+<button class="ui icon button blue" [routerLink]="['../../../edit/note',note.id]"><i class="edit icon"></i></button>
+<button class="ui icon red button" (click)="removeNote()"><i class="trash icon"></i></button>
+<br>
+<br>
+
+
+<img class="ui image" [src]="note.image_url">
+<p class="ui segment">{{note.text}}</p>
+@if (note.todos) {
+<div class="ui segment">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <h2 style="margin: 0;" class="ui header">Todos</h2>
+        <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i
+                class="add icon"></i></button>
+    </div>
+    @for (todo of note.todos; track todo) {
+    <div class="item bs-todo-list-item" [todo]="todo"></div>
+    <div class="ui divider"></div>
+    }
+</div>
 
 }
 
-<button class="ui red button" >Back to Note Liste</button>
+}
+
+<button [routerLink]="'../'" class="ui blue button">Back to Note List</button>

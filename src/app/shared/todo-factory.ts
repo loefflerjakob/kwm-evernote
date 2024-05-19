@@ -14,7 +14,7 @@ export class TodoFactory {
             rawTodo.text,
             typeof(rawTodo.due_date) === 'string' ? new Date(rawTodo.due_date) : rawTodo.due_date,
             rawTodo.image_url,
-            rawTodo.tags,
+            rawTodo.tags
         );
     }
 }
