@@ -1,9 +1,11 @@
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
     <div style="display: flex; align-items: center; gap: 20px;">
-        <input type="checkbox" class="ui checkbox huge" />
         <div>
             <div style="display: flex; align-items: center;">
-                <img class="ui avatar image" [src]="todo.image_url">
+                @if(todo.image_url) {
+                    <img class="ui avatar image" [src]="todo.image_url">
+
+                }
                 <h3 class="ui header" style="margin: 0;"><a>{{todo.title}}</a></h3>
             </div>
             <div class="content">
@@ -30,9 +32,10 @@
     </div>
    
     <div>
+        @if(authService.isLoggedIn()){
         <a (click)="removeTodo()" class="ui red label"><i style="margin: 0;" class="delete icon"></i></a>
-        <!--//TODO hier router link anpassen -->
-        <a class="ui label"  [routerLink]="['../edit/todo',todo.id]"><i style="margin: 0;" class="edit icon"></i></a>
+        <a class="ui label" [routerLink]="['/edit/todo', todo.id]"><i style="margin: 0;" class="edit icon"></i></a>
+        }
     </div>
    
 </div>

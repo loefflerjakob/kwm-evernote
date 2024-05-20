@@ -11,8 +11,11 @@
     }
 
 </div>
+@if(authService.isLoggedIn()){
+
 <button class="ui icon button blue" [routerLink]="['../../../edit/note',note.id]"><i class="edit icon"></i></button>
 <button class="ui icon red button" (click)="removeNote()"><i class="trash icon"></i></button>
+}
 <br>
 <br>
 
@@ -23,8 +26,10 @@
 <div class="ui segment">
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
         <h2 style="margin: 0;" class="ui header">Todos</h2>
+        @if(authService.isLoggedIn()){
+
         <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i
-                class="add icon"></i></button>
+                class="add icon"></i></button> }
     </div>
     @for (todo of note.todos; track todo) {
     <div class="item bs-todo-list-item" [todo]="todo"></div>

@@ -1,14 +1,19 @@
 @if(kwmlist) {
     <h1>{{kwmlist.name}}</h1>
+    @if(authService.isLoggedIn()){
     <button class="ui icon button blue" [routerLink]="['../../edit/kwmlist',kwmlist.id]"><i class="edit icon"></i></button>  
     <button class="ui icon red button" (click)="removeKwmlist()"><i class="trash icon"></i></button>  
+    }
 
 
 
     <div class="ui segment">
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
             <h2 style="margin: 0;" class="ui header">Notes</h2>
-            <button routerLink="/edit/note" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
+            @if(authService.isLoggedIn()){
+
+            <button routerLink="/edit/note" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>
+            }  
         </div>
         @if (kwmlist.notes) {
         <div class="ui relaxed divided list">

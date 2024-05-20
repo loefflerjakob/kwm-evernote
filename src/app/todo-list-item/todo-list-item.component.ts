@@ -3,6 +3,7 @@ import { Todo } from '../shared/todo';
 import { TodoFactory } from '../shared/todo-factory';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TodoService } from '../shared/todo.service';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'div.bs-todo-list-item, a.bs-todo-list-item',
@@ -19,7 +20,9 @@ export class TodoListItemComponent {
   constructor(
     private ts: TodoService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
+
   ) { }
 
 

@@ -1,8 +1,10 @@
 <div class="ui segment">
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
         <h2 style="margin: 0;" class="ui header">Todos</h2>
-        <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
+        @if(authService.isLoggedIn()){
 
+        <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
+        }
     </div>
     @if(todos) {
     <div class="ui relaxed divided list">

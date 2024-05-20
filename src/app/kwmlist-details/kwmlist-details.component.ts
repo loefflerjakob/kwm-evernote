@@ -6,6 +6,8 @@ import { NoteDetailsComponent } from '../note-details/note-details.component';
 import { NoteListComponent } from '../note-list/note-list.component';
 import { NoteListItemComponent } from '../note-list-item/note-list-item.component';
 import { KwmlistFactory } from '../shared/kwmlist-factory';
+import { AuthenticationService } from '../shared/authentication.service';
+
 
 @Component({
   selector: 'bs-kwmlist-details',
@@ -23,7 +25,9 @@ export class KwmlistDetailsComponent implements OnInit {
   constructor(
     private ks: KwmlistService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
+
   ) { }
 
   ngOnInit() {

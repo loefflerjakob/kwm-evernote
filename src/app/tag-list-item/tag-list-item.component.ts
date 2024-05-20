@@ -3,6 +3,7 @@ import { Tag } from '../shared/tag';
 import { TagFactory } from '../shared/tag-factory';
 import { TagService } from '../shared/tag.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'div.bs-tag-list-item',
@@ -20,7 +21,9 @@ export class TagListItemComponent {
   constructor(
     private ts: TagService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
+
     ) { }
 
     removeTag() {

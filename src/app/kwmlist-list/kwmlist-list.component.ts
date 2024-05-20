@@ -4,6 +4,7 @@ import { Tag, Todo } from '../shared/note';
 import { KwmlistService } from '../shared/kwmlist.service';
 import { KwmlistListItemComponent } from '../kwmlist-list-item/kwmlist-list-item.component';
 import { RouterLink } from '@angular/router';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'bs-kwmlist-list',
@@ -19,7 +20,11 @@ export class KwmlistListComponent implements OnInit{
 
   kwmlists: Kwmlist[] = [];
 
-  constructor(private ks: KwmlistService) {}
+  constructor(
+    private ks: KwmlistService,
+    public authService: AuthenticationService
+
+  ) {}
 
 
   ngOnInit() {

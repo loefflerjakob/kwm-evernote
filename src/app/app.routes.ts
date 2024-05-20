@@ -9,6 +9,7 @@ import { TagFormComponent } from './tag-form/tag-form.component';
 import { KwmlistFormComponent } from './kwmlist-form/kwmlist-form.component';
 import { NoteFormComponent } from './note-form/note-form.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +32,7 @@ export const routes: Routes = [
     { path: 'edit/todo', component: TodoFormComponent },
     { path: 'edit/todo/:id', component: TodoFormComponent },
 
+    { path: 'login', component: LoginComponent}
 
 
 

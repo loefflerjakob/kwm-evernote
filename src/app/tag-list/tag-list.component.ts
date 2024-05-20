@@ -3,6 +3,7 @@ import { TagService } from '../shared/tag.service';
 import { Tag } from '../shared/tag';
 import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
 import { RouterLink } from '@angular/router';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'bs-tag-list',
@@ -17,7 +18,11 @@ import { RouterLink } from '@angular/router';
 export class TagListComponent implements OnInit {
   tags: Tag[] = [];
 
-  constructor(private ts: TagService) {
+  constructor(
+    private ts: TagService,
+    public authService: AuthenticationService
+
+  ) {
 
   }
 

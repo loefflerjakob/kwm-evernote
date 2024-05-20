@@ -2,5 +2,8 @@
     <a class="ui blue tag label">
       {{ tag.name }}
     </a>
+    @if(authService.isLoggedIn()){
+
     <a class="ui red label" (click)="removeTag()"><i style="margin: 0;" class="delete icon"></i></a>
     <a class="ui label"  [routerLink]="['../edit/tag',tag.id]"><i style="margin: 0;" class="edit icon"></i></a>
+    }

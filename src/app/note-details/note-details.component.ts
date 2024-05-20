@@ -6,6 +6,7 @@ import { TodoListItemComponent } from '../todo-list-item/todo-list-item.componen
 import { NoteFactory } from '../shared/note-factory';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TodoFactory } from '../shared/todo-factory';
+import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
   selector: 'bs-note-details',
@@ -25,6 +26,8 @@ export class NoteDetailsComponent implements OnInit {
     private ns: NoteService,
     private route: ActivatedRoute,
     private router: Router,
+    public authService: AuthenticationService
+
   ) { }
 
   ngOnInit() {
