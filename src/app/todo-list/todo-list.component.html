@@ -3,16 +3,26 @@
         <h2 style="margin: 0;" class="ui header">Todos</h2>
         @if(authService.isLoggedIn()){
 
-        <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i class="add icon"></i></button>  
+        <button routerLink="/edit/todo" routerLinkActive="active" class="ui icon button green"><i
+                class="add icon"></i></button>
         }
     </div>
-    @if(todos) {
-    <div class="ui relaxed divided list">
-        @for (todo of todos; track todos) {
-        <div class="item bs-todo-list-item" [todo]="todo"></div>
-            
-        }
-    </div>
-    }     @else {No todos yet!}
+    <div style="margin-bottom: 20px;">
+        @for (tag of tags; track tag) {
+        <label>
+            <input type="checkbox" [(ngModel)]="selectedTags[tag.name]" (change)="filterTodos()" /> {{ tag.name }}
 
+        </label>
+        }
+    </div>
+
+    @if(todos && filteredTodos) {
+    <div class="ui relaxed divided list">
+        @for (todo of filteredTodos; track todo) {
+        <div class="item bs-todo-list-item" [todo]="todo"></div>
+        }
+    </div>
+    } @else {
+    No todos yet
+    }
 </div>
