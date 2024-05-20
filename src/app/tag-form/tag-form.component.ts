@@ -61,7 +61,6 @@ export class TagFormComponent {
         });
       });
     } else {
-      console.log(tag);
       this.ts.create(tag).subscribe(res => {
         this.tag = TagFactory.empty();
         this.tagForm.reset(TagFactory.empty());
@@ -71,7 +70,6 @@ export class TagFormComponent {
   }
 
   updateErrorMessages() {
-    console.log("Is invalid?" + this.tagForm.invalid);
     this.errors = {};
     for (const message of ErrorMessages) {
       const control = this.tagForm.get(message.forControl);

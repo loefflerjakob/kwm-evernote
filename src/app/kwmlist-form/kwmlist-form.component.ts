@@ -65,7 +65,6 @@ export class KwmlistFormComponent {
         });
       });
     } else {
-      console.log(kwmlist);
       this.ks.create(kwmlist).subscribe(res => {
         this.kwmlist = KwmlistFactory.empty();
         this.kwmlistForm.reset(KwmlistFactory.empty());
@@ -75,7 +74,6 @@ export class KwmlistFormComponent {
   }
 
   updateErrorMessages() {
-    console.log("Is invalid? " + this.kwmlistForm.invalid);
     this.errors = {};
     for (const message of ErrorMessages) {
       const control = this.kwmlistForm.get(message.forControl);

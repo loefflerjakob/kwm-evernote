@@ -117,7 +117,6 @@ export class TodoFormComponent {
 
 
   updateErrorMessages() {
-    console.log("Is invalid?" + this.todoForm.invalid);
     this.errors = {};
     for (const message of ErrorMessages) {
       const control = this.todoForm.get(message.forControl);

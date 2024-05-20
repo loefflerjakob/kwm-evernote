@@ -93,7 +93,6 @@ export class NoteFormComponent {
 
   submitForm() {
     const note: Note = NoteFactory.fromObject(this.noteForm.value);
-    console.log(note);
     if(this.isUpdatingNote) {
       this.ns.update(note).subscribe(res => {
         this.router.navigate(["../../../kwmlists", note.kwmlist_id], {
@@ -111,7 +110,6 @@ export class NoteFormComponent {
 
 
   updateErrorMessages() {
-    console.log("Is invalid?" + this.noteForm.invalid);
     this.errors = {};
     for (const message of ErrorMessages) {
       const control = this.noteForm.get(message.forControl);

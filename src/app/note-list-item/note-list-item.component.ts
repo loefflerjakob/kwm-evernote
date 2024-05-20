@@ -13,8 +13,4 @@ import { NoteService } from '../shared/note.service';
 export class NoteListItemComponent {
  @Input() note:Note = NoteFactory.empty();
 
- ngOnInit() {
-  console.log(this.note);
- }
-
 }
